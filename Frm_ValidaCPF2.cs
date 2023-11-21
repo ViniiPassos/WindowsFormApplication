@@ -29,14 +29,24 @@ namespace WindowsFormsApp
 
         private void Btn_Valida_Click(object sender, EventArgs e)
         {
-            if(MessageBox.Show("Você deseja realmente validar o CPF?","Mensagem de Validação", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            string vConteudo;
+            vConteudo = Msk_CPF.Text;
+            vConteudo = vConteudo.Replace(".", "").Replace("-", "");
+            vConteudo = vConteudo.Trim();
+
+            if (vConteudo == "")
+                MessageBox.Show("Você deve digitar um CPF", "Mensagem de Validação", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            else
             {
-                bool validaCPF = false;
-                validaCPF = Cls_Uteis.Valida(Msk_CPF.Text);
-                if (validaCPF == true)
-                    MessageBox.Show("CPF Válido", "Mensagem de Validação", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                else
-                    MessageBox.Show("CPF Inválido", "Mensagem de Validação", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (MessageBox.Show("Você deseja realmente validar o CPF?", "Mensagem de Validação", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    bool validaCPF = false;
+                    validaCPF = Cls_Uteis.Valida(Msk_CPF.Text);
+                    if (validaCPF == true)
+                        MessageBox.Show("CPF Válido", "Mensagem de Validação", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    else
+                        MessageBox.Show("CPF Inválido", "Mensagem de Validação", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
     }

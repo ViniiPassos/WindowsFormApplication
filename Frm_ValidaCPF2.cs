@@ -29,25 +29,35 @@ namespace WindowsFormsApp
 
         private void Btn_Valida_Click(object sender, EventArgs e)
         {
-            string vConteudo;
-            vConteudo = Msk_CPF.Text;
-            vConteudo = vConteudo.Replace(".", "").Replace("-", "");
-            vConteudo = vConteudo.Trim();
+            string cpf = Msk_CPF.Text.Replace(".", "").Replace("-", "").Trim();
 
-            if (vConteudo == "")
-                MessageBox.Show("Você deve digitar um CPF", "Mensagem de Validação", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            if (string.IsNullOrEmpty(cpf))
+            {
+                MostrarMensagem("Você deve digitar um CPF", MessageBoxIcon.Error);
+            }
+            else if (cpf.Length != 11)
+            {
+                MostrarMensagem("CPF deve ter 11 dígitos", MessageBoxIcon.Error);
+            }
             else
             {
-                if (MessageBox.Show("Você deseja realmente validar o CPF?", "Mensagem de Validação", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if (ConfirmarAcao("Você deseja realmente validar o CPF?"))
                 {
-                    bool validaCPF = false;
-                    validaCPF = Cls_Uteis.Valida(Msk_CPF.Text);
-                    if (validaCPF == true)
-                        MessageBox.Show("CPF Válido", "Mensagem de Validação", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    else
-                        MessageBox.Show("CPF Inválido", "Mensagem de Validação", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    bool cpfValido = Cls_Uteis.Valida(cpf);
+
+                    MostrarMensagem(cpfValido ? "CPF Válido" : "CPF Inválido", cpfValido ? MessageBoxIcon.Information : MessageBoxIcon.Error);
                 }
             }
         }
+        private void MostrarMensagem(string mensagem, MessageBoxIcon icon)
+        {
+            MessageBox.Show(mensagem, "Mensagem de Validação", MessageBoxButtons.OK, icon);
+        }
+
+        private bool ConfirmarAcao(string pergunta)
+        {
+            return MessageBox.Show(pergunta, "Mensagem de Validação", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes;
+        }
+
     }
 }

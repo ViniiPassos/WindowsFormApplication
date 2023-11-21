@@ -16,7 +16,7 @@ namespace WindowsFormsApp
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Frm_ValidaSenha());
+            Application.Run(new Frm_Mascara());
         }
     }
 }

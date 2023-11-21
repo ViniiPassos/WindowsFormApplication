@@ -1,6 +1,6 @@
 ﻿namespace WindowsFormsApp
 {
-    partial class Frm_DemonstracaoKeycs
+    partial class Frm_DemonstracaoKey
     {
         /// <summary>
         /// Required designer variable.
@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Frm_DemonstracaoKey));
             this.Txt_Input = new System.Windows.Forms.TextBox();
             this.Txt_Msg = new System.Windows.Forms.TextBox();
             this.Btn_Reset = new System.Windows.Forms.Button();
@@ -102,7 +103,7 @@
             this.Lbl_Lower.Size = new System.Drawing.Size(32, 23);
             this.Lbl_Lower.TabIndex = 6;
             // 
-            // Frm_DemonstracaoKeycs
+            // Frm_DemonstracaoKey
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -114,7 +115,8 @@
             this.Controls.Add(this.Btn_Reset);
             this.Controls.Add(this.Txt_Msg);
             this.Controls.Add(this.Txt_Input);
-            this.Name = "Frm_DemonstracaoKeycs";
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Name = "Frm_DemonstracaoKey";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Demonstracao Evento Key";
             this.ResumeLayout(false);

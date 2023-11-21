@@ -29,7 +29,8 @@ namespace WindowsFormsApp
 
         private void Btm_Sair_Click(object sender, EventArgs e)
         {
-           Application.Exit();
+           //Application.Exit();
+           this.Close();
         }
 
         private void Btm_ModicaLabel_Click(object sender, EventArgs e)
